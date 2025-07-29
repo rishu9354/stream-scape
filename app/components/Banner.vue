@@ -3,26 +3,24 @@
 <!-- video logic -->
         <video :src="`/videos/${selectedSeries}.mp4`" ref="videoRef" autoplay :muted="isMuted" loop playsinline class="absolute inset-0 w-full h-full object-cover"></video>
 
-        <!-- <img :src="`/images/${selectedSeries}.jpg`" alt="series-img" class="absolute inset-0 w-full h-full object-cover opacity-90"> -->
-
         <!-- overlay effect -->
         <div class="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent"></div>
         <!-- <div class="absolute inset-0 bg-black bg-opacity-50 z-10"></div> -->
         <!-- content -->
         <div class="relative z-10 px-6 md:px-16 pt-28 max-w-4xl">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">{{ selectedSeries }}</h1>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">{{ movie.title }}</h1>
 
             <!-- ratings -->
             <div class="flex items-center space-x-4 text-sm text-gray-300 mb-4">
                 <div class="flex items-center space-x-1 text-green-400">
                     <span>⭐</span>
-                    <span>6.3</span>
+                    <span>{{ movie.vote }}</span>
                 </div>
-                <span>349 Reviews</span>
+                <span>{{ movie.reviews }} Reviews</span>
                 <span>•</span>
-                <span>2025</span>
+                <span>{{movie.released}}</span>
                 <span>•</span>
-                <span>1h 56min</span>
+                <span>{{ movie.runtime }}</span>
             </div>
 
             <!-- Mute/Unmute Button -->
@@ -33,7 +31,7 @@
         {{ isMuted ? '🔊' : '🔇' }}
       </button>
             <!-- description -->
-             <p class="text-sm md:text-base text-gray-200 mb-6">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus iure libero voluptas quis fugiat recusandae impedit consequuntur ex dolore! Sint.</p>
+             <p class="text-sm md:text-base text-gray-200 mb-6">{{ movie.storyline }}</p>
             <!-- buttons -->
              <div class="flex gap-4">
                 <button class="bg-red-700 text-black px-6 py-2 rounded-md font-semibold hover:bg-red-800 transition">▶ Play</button>
@@ -45,9 +43,13 @@
 
 
 <script setup>
+import { movieData } from '~/data/movieData';
+
 const route = useRoute();
 const videoRef = ref(null);
 const isMuted = ref(true);
+
+
 
 const toggleMute = ()=>{
     isMuted.value = !isMuted.value;
@@ -75,6 +77,10 @@ const selectedSeries = computed(()=>{
     }
     return "Featured Series";   
 });
+
+const slug = selectedSeries.value;
+const movie = movieData[slug];
+console.log("movie",movie);
 
 useHead({
     title:props.isDynamicPage ? `Series: ${selectedSeries.value}` : "Stream Scape"

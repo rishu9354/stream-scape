@@ -23,7 +23,8 @@
 
 // using server/api to get web series name
 const { data: series } = await useFetch("/api/lists",{baseURL:'/api'});
+console.log(series);
 
 
-// const iphones=["iphone-XS","iphone-14","iphone-14-pro"];
+
 </script>
