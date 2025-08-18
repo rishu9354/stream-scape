@@ -1,13 +1,12 @@
 <template>
-    <Banner :is-dynamic-page="true"/>
     <div>
-        <MovieDetails/>
+        <VideoPlayer />
     </div>
-    
 </template>
 
 <script setup>
 definePageMeta({
+    layout:false,
     middleware:['auth']
 })
 

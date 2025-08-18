@@ -18,8 +18,11 @@
             <a href="" class="nav-link">Movies</a>
             <a href="" class="nav-link">My List</a>
             <input type="search" name="inputSearch" class="text-white px-3 py-2 bg-zinc-800 rounded-3xl" placeholder="Search">
-            <span class="px-3 py-2 bg-zinc-700 rounded-full">
-                <button type="button">Profile</button>
+            <span class="px-3 py-2 bg-green-400 rounded-full font-mono font-semibold hover:bg-red-600 cursor-pointer"
+            @mouseenter="isHover = true" @mouseleave="isHover = false">
+                <button type="button" class="" @click="logout">{{ isHover ? 'Logout' :(auth.isAuthenticated ? 'Online' : 'Offline') }}</button>
+
+                
             </span>
         </div>
            </div>
@@ -38,3 +41,18 @@
     </nav>
 
 </template>
+
+<script setup>
+import { useAuth } from '~/composables/state';
+import { useAuthStore } from '~/stores/authStore';
+const router = useRouter();
+const auth = useAuth();
+const logic = useAuthStore();
+const isHover = ref(false);
+
+function logout(){
+    logic.logout();
+    console.warn("Logging Out ...");
+    router.push("/login")
+}
+</script>

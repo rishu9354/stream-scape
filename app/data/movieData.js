@@ -36,7 +36,15 @@ export const movieData = {
         language:"Hindi",
         vote:"9.0/10",
         genres: ["Comedy", "Drama"],
-        reviews:"109k"
+        reviews:"109k",
+        episodes:[
+            { title:"Episode 1: Case-Mukadma", url:"/videos/Panchayat.mp4", duration:"45m" },
+            { title:"Episode 2: Zakhm", url:"/videos/Devara.mp4", duration:"45m" },
+            { title:"Episode 3: Vachan", url:"/videos/Celebrity.mp4", duration:"45m" },
+            { title:"Episode 4: Shakti-Pradarshan", url:"/videos/Salaar.mp4", duration:"45m" },
+
+
+        ]
     },
      "Salaar":{
         title:"Salaar Part 1 - Ceasefire",
