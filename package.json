@@ -13,6 +13,7 @@
     "@pinia/nuxt": "^0.11.2",
     "@tailwindcss/vite": "^4.1.11",
     "axios": "^1.11.0",
+    "dotenv": "^17.2.2",
     "json-server": "^1.0.0-beta.3",
     "nuxt": "^4.0.0",
     "pinia": "^3.0.3",

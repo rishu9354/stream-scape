@@ -42,8 +42,8 @@ function loadEpisode(index){
     if(episodes[index]){
         currentIndex.value = index;
         current.value = episodes[index];
-        console.log("current ",current.value.video_url)
-        console.log("Now playing episode:", current.value.title, "=>", current.value.video_url)
+        // console.log("current ",current.value.video_url)
+        // console.log("Now playing episode:", current.value.title, "=>", current.value.video_url)
     }
 }
 

@@ -31,10 +31,10 @@ export const useAuthStore = defineStore('auth', () => {
                 });
                 tokenCookie.value = res.data.token;
 
-                console.log(email, password);
+                // console.log(email, password);
 
-                console.log("Backend se aaya hua success msg: ", res.data.success)
-                console.log("Backend se aaya hua msg: ", res.data.msg)
+                // console.log("Backend se aaya hua success msg: ", res.data.success)
+                // console.log("Backend se aaya hua msg: ", res.data.msg)
                 return true;
 
                 // localStorage.setItem("token",res.data.token);
@@ -71,11 +71,11 @@ export const useAuthStore = defineStore('auth', () => {
                 tokenCookie.value = res.data.token;
 
 
-                console.log("Backend se aaya hua msg: ", res.data.success)
+                // console.log("Backend se aaya hua msg: ", res.data.success)
 
                 // localStorage.setItem("token",res.data.token);
 
-                console.warn("SignUp Done", res.data);
+                // console.warn("SignUp Done", res.data);
                 return true;
             } else {
                 // alert("Invaild credentials");
@@ -131,9 +131,9 @@ export const useMovieStore = defineStore('mdata',() =>{
             const res = await $axios.get(`/video/movie/${encodeURIComponent(title)}`);
             if(!res || !res.data) throw new Error("Failed to fetch movie!");
 
-            console.log("Movie data from backend :",res.data)
+            // console.log("Movie data from backend :",res.data)
             movie.value = res.data.data || res.data;
-            console.log("Movie.value",movie.value);
+            // console.log("Movie.value",movie.value);
             
             currentEp.value = res.data.episodes?.[0] || null;
 

@@ -58,21 +58,7 @@ const getMovieData = useMovieStore();
 const { movie, currentEp } = storeToRefs(getMovieData);
 const movieData = movie;
 console.log("movie details:",movieData.title)
-// console.log(slug);
-// const movie = movieData[slug] || {
-//     title: "Not Found",
-//     poster: "/images/placeholder.jpg",
-//     storyline: "This movie does not exist in the hardcoded list.",
-//     released: "N/A",
-//     runtime: 0,
-//     budget: 0,
-//     popularity: 0,
-//     language: "Unknown",
-//     vote: 0,
-//     genres: [],
-//     reviews: 0,
-//     episodes: []
-// }
+
 
 const selectedTab = ref('storyline');
 // const currentEp = ref(movie.episodes?.[0] || null);

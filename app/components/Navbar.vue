@@ -3,7 +3,7 @@
            <div class="flex justify-between items-center">
             <!-- brand name -->
                <NuxtLink to="">
-               <!-- <h1 class="text-3xl font-extralight text-red-500">LOGO</h1> -->
+             
                 <img src="/images/logo.png" alt="logo" class="size-16">
            </NuxtLink>
 
@@ -16,10 +16,10 @@
             </button>
        <!-- desktop menu -->
         <div class="hidden md:flex space-x-12 items-center">
-            <a href="/" class="nav-link hover:text-yellow-600">Home</a>
-            <a href="/show" class="nav-link">Tv Shows</a>
-            <a href="" class="nav-link">Movies</a>
-            <a href="" class="nav-link">My List</a>
+            <a href="/" class=" hover:text-yellow-600">Home</a>
+            <a href="/show" class="">Tv Shows</a>
+            <a href="" class="">Movies</a>
+            <a href="" class="">My List</a>
             <input type="search" name="inputSearch" class="text-white px-3 py-2 bg-zinc-800 rounded-3xl" placeholder="Search">
             <span class="px-3 py-2 bg-green-400 rounded-full font-mono font-semibold hover:bg-red-600 cursor-pointer"
             @mouseenter="isHover = true" @mouseleave="isHover = false">
@@ -32,10 +32,10 @@
 
            <!-- mobile view -->
             <div class="flex flex-col space-y-4 mt-6 md:hidden" v-if="isOpen">
-            <a href="/" class="nav-link hover:text-yellow-600">Home</a>
-            <a href="/show" class="nav-link">Tv Shows</a>
-            <a href="" class="nav-link">Movies</a>
-            <a href="" class="nav-link">My List</a>
+            <a href="/" class=" hover:text-yellow-600">Home</a>
+            <a href="/show" class="">Tv Shows</a>
+            <a href="" class="">Movies</a>
+            <a href="" class="">My List</a>
             <span class="px-3 py-2 bg-green-400 rounded-full font-mono font-semibold hover:bg-red-600 cursor-pointer"
             @mouseenter="isHover = true" @mouseleave="isHover = false">
             <button type="button" class="" @click="logout">{{ isHover ? 'Logout' :(auth.isAuthenticated ? 'Online' : 'Offline') }}</button>

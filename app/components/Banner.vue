@@ -55,7 +55,7 @@ const getMovieData = useMovieStore();
 const { movie } = storeToRefs(getMovieData)
 
 
-console.log("Banner movie",movie.value);
+// console.log("Banner movie",movie.value);
 // const valueMovie = movie.value;
 const toggleMute = ()=>{
     isMuted.value = !isMuted.value;
@@ -93,7 +93,7 @@ onMounted(() =>{
     }
 })
 watch(movie,(val)=>{
-    console.log("Banner movie updated:",val);
+    console.log("Banner movie updated:");
     
 })
 useHead({

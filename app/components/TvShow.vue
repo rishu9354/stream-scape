@@ -23,7 +23,7 @@
 
 // using server/api to get web series name
 const { data: series } = await useFetch("/api/shows",{baseURL:'/api'});
-console.log(series);
+// console.log(series);
 
 
 
