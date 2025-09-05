@@ -1,0 +1,146 @@
+// import axios from "axios";
+import { defineStore } from "pinia";
+import { useAuth } from '~/composables/state'
+
+
+
+export const useAuthStore = defineStore('auth', () => {
+    // state
+    const auth = useAuth(); //global state
+    const { $axios } = useNuxtApp(); //global state plugins
+    const user = ref(null);
+    const token = ref(null);
+
+    // actions
+    async function login(email, password) {
+        try {
+            const res = await $axios.post("/auth/login", { email, password })
+
+
+            if (res.status === 200 && res.data.success === true) {
+                user.value = res.data.user;
+                token.value = res.data.token
+                auth.value.isAuthenticated = true;
+
+                if (process.client) localStorage.setItem("token", res.data.token);
+
+                const tokenCookie = useCookie("token", {
+                    sameSite: 'lax',
+                    secure: process.client ? location.protocol === 'https:' : true,
+                    maxAge: 60 * 60 * 24 * 7
+                });
+                tokenCookie.value = res.data.token;
+
+                console.log(email, password);
+
+                console.log("Backend se aaya hua success msg: ", res.data.success)
+                console.log("Backend se aaya hua msg: ", res.data.msg)
+                return true;
+
+                // localStorage.setItem("token",res.data.token);
+            } else {
+                // alert("Invaild credentials");
+                throw new Error('Invaild credentials');
+            }
+            // localStorage.setItem("user-info",JSON.stringify(res.data.user))
+        }
+        catch (err) {
+            console.error('Login failed:', err)
+            throw err
+        }
+    }
+
+    async function signup(fullname, email, password) {
+        try {
+            const res = await $axios.post("/auth/signup", {
+                fullname,
+                email,
+                password
+            });
+
+            if (res.status === 200 && res.data.success === true) {
+                user.value = res.data.user;
+                token.value = res.data.token
+                auth.value.isAuthenticated = true;
+                if (process.client) localStorage.setItem("token", res.data.token);
+                const tokenCookie = useCookie("token", {
+                    sameSite: 'lax',
+                    secure: process.client ? location.protocol === 'https:' : true,
+                    maxAge: 60 * 60 * 24 * 7
+                });
+                tokenCookie.value = res.data.token;
+
+
+                console.log("Backend se aaya hua msg: ", res.data.success)
+
+                // localStorage.setItem("token",res.data.token);
+
+                console.warn("SignUp Done", res.data);
+                return true;
+            } else {
+                // alert("Invaild credentials");
+                throw new Error('Invaild credentials');
+            }
+            // localStorage.setItem("user-info", JSON.stringify(res.data));
+        } catch (err) {
+            console.error("Signup error:", err);
+            throw err;
+        }
+    }
+
+    function logout() {
+        user.value = null;
+        token.value = null;
+        auth.value.isAuthenticated = false;
+        if (process.client) localStorage.removeItem('token')
+
+        // (optional, agar cookie use kar rahe ho)
+        const c = useCookie('token')
+        c.value = null
+
+        console.log('User logged out')
+
+
+    }
+
+
+    return { auth, login, user, logout, signup, token }
+})
+
+export const useMovieStore = defineStore('mdata',() =>{
+    // state
+    const { $axios } = useNuxtApp(); //global state plugins
+    const movie = ref({
+    title: "Not Found",
+    poster: "/images/placeholder.jpg",
+    storyline: "This movie does not exist in the hardcoded list.",
+    released: "N/A",
+    runtime: 0,
+    budget: 0,
+    popularity: 0,
+    language: "Unknown",
+    vote: 0,
+    genres: [],
+    reviews: 0,
+    episodes: []
+    })
+    const currentEp = ref(null)
+    // actions
+    async function fetchMovie(title){
+        try {
+            const res = await $axios.get(`/video/movie/${encodeURIComponent(title)}`);
+            if(!res || !res.data) throw new Error("Failed to fetch movie!");
+
+            console.log("Movie data from backend :",res.data)
+            movie.value = res.data.data || res.data;
+            console.log("Movie.value",movie.value);
+            
+            currentEp.value = res.data.episodes?.[0] || null;
+
+        } catch (error) {
+            console.error("Error in fetching movie:",error);
+        }
+    }
+
+    return {fetchMovie, movie, currentEp}
+})

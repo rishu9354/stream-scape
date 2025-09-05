@@ -1,0 +1,1 @@
+export { default } from "file:///home/rishabh/Owner/boys/Vue_JS/vue-projects/Web%20Series%20Streaming%20Platform%20project/Stream-Scape-frontend/node_modules/@nuxt/vite-builder/dist/runtime/vite-node.mjs"
