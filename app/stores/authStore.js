@@ -110,6 +110,7 @@ export const useAuthStore = defineStore('auth', () => {
 export const useMovieStore = defineStore('mdata',() =>{
     // state
     const { $axios } = useNuxtApp(); //global state plugins
+    const movies = ref([]);
     const movie = ref({
     title: "Not Found",
     poster: "/images/placeholder.jpg",
@@ -142,5 +143,19 @@ export const useMovieStore = defineStore('mdata',() =>{
         }
     }
 
-    return {fetchMovie, movie, currentEp}
+    async function movieList() {
+        try {
+            const res = await $axios.get(`/video/`);
+            if(!res || !res.data) throw new Error("Failed to fetch movie!");
+            console.log("Movie list from backend :",res.data)
+            movies.value = res.data?.data || res.data;
+            console.log("MovieList.value",movies.value);
+        } catch (error) {
+            console.error("Error in fetching movie:",error);
+            
+        }
+    }
+
+    return {fetchMovie, movie, currentEp, movieList,movies}
 })
+

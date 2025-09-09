@@ -14,3 +14,4 @@ export default defineNuxtPlugin(() => {
 // backend url : https://backend-stream-scape.onrender.com/->render
 // backend url: https://backend-stream-scape-production.up.railway.app/ ->railway.app
 
+// localurL: http://localhost:3001

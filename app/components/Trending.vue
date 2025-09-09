@@ -3,15 +3,15 @@
         <h1 class="text-5xl px-8 py-5 pt-5 font-medium font-serif text-yellow-600">Trending Series</h1>
         <div v-if="series" class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10 px-8">
 
-            <div v-for="list in series" :key="list"
+            <div v-for="list in series" :key="list._id"
                 class="shadow-lg rounded-lg text-center bg-zinc-800 hover:bg-700 transition">
-                <h1 class="text-2xl py-4 font-semibold font-sans">{{ list }}</h1>
+                <h1 class="text-2xl py-4 font-semibold font-sans">{{ list.title }}</h1>
                 <div class="flex justify-center px-5 pb-4 rounded-md">
-                    <img :src="`/images/${list}.jpg`" alt="pic" class="w-full h-48 object-cover rounded">
+                    <img :src="list.poster" alt="pic" class="w-full h-48 object-cover rounded">
                 </div>
                 <!-- play and wishlist btn -->
                  <div class="flex gap-4 justify-center mb-4 mt-3">
-                <NuxtLink class="bg-zinc-600 text-black px-6 py-2 rounded-md font-semibold hover:bg-zinc-700 transition" :to="`/series/${list}`">More info</NuxtLink>    
+                <NuxtLink class="bg-zinc-600 text-black px-6 py-2 rounded-md font-semibold hover:bg-zinc-700 transition" :to="`/series/${list.title}`">More info</NuxtLink>    
                 <!-- <NuxtLink class="bg-gray-700 text-white px-6 py-2 rounded-md font-semibold hover:bg-gray-600 transition">+ My List</NuxtLink> -->
              </div>
             </div>
@@ -20,11 +20,16 @@
 </template>
 
 <script setup>
+import { useMovieStore } from '~/stores/authStore';
+const getMovieData = useMovieStore();
+const { movies } = storeToRefs(getMovieData);
 
-// using server/api to get web series name
-const { data: series } = await useFetch("/api/lists",{baseURL:'/api'});
-// console.log(series);
 
+onMounted(() =>{
+    getMovieData.movieList()
+})
+console.log(movies);
+const series = movies.value
 
 
 </script>
