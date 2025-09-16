@@ -1,9 +1,9 @@
 <template>
     <section class="relative w-full h-[95vh] bg-zinc-900 text-white">
         <h1 class="text-5xl px-8 py-5 pt-5 font-medium font-serif text-yellow-600">Trending Series</h1>
-        <div v-if="series" class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10 px-8">
+        <div v-if="movies && movies.length > 0" class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10 px-8">
 
-            <div v-for="list in series" :key="list._id"
+            <div v-for="list in movies" :key="list._id"
                 class="shadow-lg rounded-lg text-center bg-zinc-800 hover:bg-700 transition">
                 <h1 class="text-2xl py-4 font-semibold font-sans">{{ list.title }}</h1>
                 <div class="flex justify-center px-5 pb-4 rounded-md">
@@ -16,11 +16,16 @@
              </div>
             </div>
         </div>
+
+        <div v-else class="text-center text-xl mt-20 text-gray-400">
+            Loading trending series...
+        </div>
     </section>
 </template>
 
 <script setup>
-import { useMovieStore } from '~/stores/authStore';
+import { useMovieStore } from '~/stores/movieStore';
+import { storeToRefs } from 'pinia';
 const getMovieData = useMovieStore();
 const { movies } = storeToRefs(getMovieData);
 
@@ -29,7 +34,7 @@ onMounted(() =>{
     getMovieData.movieList()
 })
 console.log(movies);
-const series = movies.value
+// const series = movies.value
 
 
 </script>

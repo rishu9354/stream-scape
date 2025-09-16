@@ -50,7 +50,7 @@
 
 <script setup>
 // import { movieData } from '~/data/movieData';
-import { useMovieStore } from '~/stores/authStore';
+import { useMovieStore } from '~/stores/movieStore';
 const route = useRoute();
 const router = useRouter();
 const slug = route.params.name;
