@@ -26,7 +26,7 @@ export const useAuthStore = defineStore('auth', () => {
 
                 const tokenCookie = useCookie("token", {
                     sameSite: 'lax',
-                    secure: process.client ? location.protocol === 'https:' : true,
+                    secure: process.env.NODE_ENV === 'production' || location.protocol === 'https:',
                     maxAge: 60 * 60 * 24 * 7
                 });
                 tokenCookie.value = res.data.token;
@@ -65,7 +65,7 @@ export const useAuthStore = defineStore('auth', () => {
                 if (process.client) localStorage.setItem("token", res.data.token);
                 const tokenCookie = useCookie("token", {
                     sameSite: 'lax',
-                    secure: process.client ? location.protocol === 'https:' : true,
+                    secure: process.env.NODE_ENV === 'production' || location.protocol === 'https:',
                     maxAge: 60 * 60 * 24 * 7
                 });
                 tokenCookie.value = res.data.token;
