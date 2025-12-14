@@ -15,9 +15,11 @@ interface _GlobalComponents {
       'Banner': typeof import("../app/components/Banner.vue")['default']
     'Detail': typeof import("../app/components/Detail.vue")['default']
     'EpisodeList': typeof import("../app/components/EpisodeList.vue")['default']
+    'ErrorComponent': typeof import("../app/components/ErrorComponent.vue")['default']
     'LoginForm': typeof import("../app/components/LoginForm.vue")['default']
     'MovieDetails': typeof import("../app/components/MovieDetails.vue")['default']
     'Navbar': typeof import("../app/components/Navbar.vue")['default']
+    'Slider': typeof import("../app/components/Slider.vue")['default']
     'ToggleTabs': typeof import("../app/components/ToggleTabs.vue")['default']
     'Trending': typeof import("../app/components/Trending.vue")['default']
     'TvShow': typeof import("../app/components/TvShow.vue")['default']
@@ -49,9 +51,11 @@ interface _GlobalComponents {
       'LazyBanner': LazyComponent<typeof import("../app/components/Banner.vue")['default']>
     'LazyDetail': LazyComponent<typeof import("../app/components/Detail.vue")['default']>
     'LazyEpisodeList': LazyComponent<typeof import("../app/components/EpisodeList.vue")['default']>
+    'LazyErrorComponent': LazyComponent<typeof import("../app/components/ErrorComponent.vue")['default']>
     'LazyLoginForm': LazyComponent<typeof import("../app/components/LoginForm.vue")['default']>
     'LazyMovieDetails': LazyComponent<typeof import("../app/components/MovieDetails.vue")['default']>
     'LazyNavbar': LazyComponent<typeof import("../app/components/Navbar.vue")['default']>
+    'LazySlider': LazyComponent<typeof import("../app/components/Slider.vue")['default']>
     'LazyToggleTabs': LazyComponent<typeof import("../app/components/ToggleTabs.vue")['default']>
     'LazyTrending': LazyComponent<typeof import("../app/components/Trending.vue")['default']>
     'LazyTvShow': LazyComponent<typeof import("../app/components/TvShow.vue")['default']>
@@ -89,9 +93,11 @@ declare module 'vue' {
 export const Banner: typeof import("../app/components/Banner.vue")['default']
 export const Detail: typeof import("../app/components/Detail.vue")['default']
 export const EpisodeList: typeof import("../app/components/EpisodeList.vue")['default']
+export const ErrorComponent: typeof import("../app/components/ErrorComponent.vue")['default']
 export const LoginForm: typeof import("../app/components/LoginForm.vue")['default']
 export const MovieDetails: typeof import("../app/components/MovieDetails.vue")['default']
 export const Navbar: typeof import("../app/components/Navbar.vue")['default']
+export const Slider: typeof import("../app/components/Slider.vue")['default']
 export const ToggleTabs: typeof import("../app/components/ToggleTabs.vue")['default']
 export const Trending: typeof import("../app/components/Trending.vue")['default']
 export const TvShow: typeof import("../app/components/TvShow.vue")['default']
@@ -123,9 +129,11 @@ export const NuxtRouteAnnouncer: typeof import("../node_modules/nuxt/dist/app/co
 export const LazyBanner: LazyComponent<typeof import("../app/components/Banner.vue")['default']>
 export const LazyDetail: LazyComponent<typeof import("../app/components/Detail.vue")['default']>
 export const LazyEpisodeList: LazyComponent<typeof import("../app/components/EpisodeList.vue")['default']>
+export const LazyErrorComponent: LazyComponent<typeof import("../app/components/ErrorComponent.vue")['default']>
 export const LazyLoginForm: LazyComponent<typeof import("../app/components/LoginForm.vue")['default']>
 export const LazyMovieDetails: LazyComponent<typeof import("../app/components/MovieDetails.vue")['default']>
 export const LazyNavbar: LazyComponent<typeof import("../app/components/Navbar.vue")['default']>
+export const LazySlider: LazyComponent<typeof import("../app/components/Slider.vue")['default']>
 export const LazyToggleTabs: LazyComponent<typeof import("../app/components/ToggleTabs.vue")['default']>
 export const LazyTrending: LazyComponent<typeof import("../app/components/Trending.vue")['default']>
 export const LazyTvShow: LazyComponent<typeof import("../app/components/TvShow.vue")['default']>

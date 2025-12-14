@@ -5,6 +5,9 @@
 
 <script setup>
 useHead({
-    title:"Tv Shows"
+    title:"Shows - StreamScape"
 })
+// definePageMeta({
+//     middleware:["auth"]
+// })
 </script>

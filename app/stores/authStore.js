@@ -9,7 +9,13 @@ export const useAuthStore = defineStore('auth', () => {
     const auth = useAuth(); //global state
     const { $axios } = useNuxtApp(); //global state plugins
     const user = ref(null);
-    const token = ref(null);
+    const fname = ref('');
+  const token = useCookie('token', {
+    maxAge: 60 * 60 * 24 * 7, // 1 week tak valid rahega
+    path: '/',                 // <--- YEH SABSE ZAROORI HAI (Isse cookie poori app me dikhegi)
+    // secure: true,           // Agar https use kar rahe ho to uncomment kar dena
+    // sameSite: 'lax'
+});
 
     // actions
     async function login(email, password) {
@@ -20,19 +26,11 @@ export const useAuthStore = defineStore('auth', () => {
             if (res.status === 200 && res.data.success === true) {
                 user.value = res.data.user;
                 token.value = res.data.token
-                auth.value.isAuthenticated = true;
+                this.auth.isAuthenticated = true;
 
                 if (process.client) localStorage.setItem("token", res.data.token);
 
-                const tokenCookie = useCookie("token", {
-                    sameSite: 'lax',
-                    secure: process.env.NODE_ENV === 'production' || location.protocol === 'https:',
-                    maxAge: 60 * 60 * 24 * 7
-                });
-                tokenCookie.value = res.data.token;
-
-                // console.log(email, password);
-
+                fname.value = res.data.user.fullname;
                 // console.log("Backend se aaya hua success msg: ", res.data.success)
                 // console.log("Backend se aaya hua msg: ", res.data.msg)
                 return true;
@@ -61,14 +59,11 @@ export const useAuthStore = defineStore('auth', () => {
             if (res.status === 200 && res.data.success === true) {
                 user.value = res.data.user;
                 token.value = res.data.token
-                auth.value.isAuthenticated = true;
+                this.auth.isAuthenticated = true;
+
                 if (process.client) localStorage.setItem("token", res.data.token);
-                const tokenCookie = useCookie("token", {
-                    sameSite: 'lax',
-                    secure: process.env.NODE_ENV === 'production' || location.protocol === 'https:',
-                    maxAge: 60 * 60 * 24 * 7
-                });
-                tokenCookie.value = res.data.token;
+                fname.value = res.data.user.fullname;
+
 
 
                 // console.log("Backend se aaya hua msg: ", res.data.success)
@@ -104,6 +99,6 @@ export const useAuthStore = defineStore('auth', () => {
     }
 
 
-    return { auth, login, user, logout, signup, token }
+    return { auth, login, user, logout, signup, token,fname }
 })
 

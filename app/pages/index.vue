@@ -1,6 +1,7 @@
 <template>
     <div>
-        <Banner :series-list="trendingSeries" :is-dynamic-page="false"/>
+        <!-- <Banner :series-list="trendingSeries" :is-dynamic-page="false"/> -->
+         <Slider :series-list="trendingSeries" :is-dynamic-page="false"/>
         <Trending />
     </div>
     
@@ -13,5 +14,10 @@ const { data: trendingSeries } = await useFetch("/api/lists",{baseURL:'/api'});
 // definePageMeta({
 //     middleware:["auth"]
 // })
+
+// SEO
+useHead({
+    title:'Home - StreamScape'
+})
 </script>
 

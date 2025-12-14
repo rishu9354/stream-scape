@@ -5,9 +5,9 @@
 </template>
 
 <script setup>
-definePageMeta({
-    layout:false,
-   
+// SEO
+useHead({
+    title:`Player`
 })
 
 </script>
