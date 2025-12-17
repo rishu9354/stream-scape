@@ -12,26 +12,33 @@
 const route = useRoute();
 
 const props = defineProps({
-    seriesList:Array,
+    seriesList:{
+    type: Array,
+    default: () => []
+  },
     isDynamicPage:Boolean,
     
 })
 
-const selectedSeries = computed(()=>{
-    // if coming from [name].vue
+const selectedSeries = ref('');
+
+onMounted(()=>{
     if(props.isDynamicPage && route.params.name){
-        return route.params.name.replaceAll("-", "");
+        selectedSeries.value =  route.params.name;
+        return;
     } 
 
     // if coming from home page
-    if(props.seriesList && props.seriesList.length > 0){
+    if(props.seriesList.length > 0){
         const randomIndex = Math.floor(Math.random() * props.seriesList.length);
-        return props.seriesList[randomIndex].replaceAll("-","");
+        selectedSeries.value =  props.seriesList[randomIndex];
     }
-    return "Featured Series";   
-});
 
-const slug = computed(() => route.params.name || selectedSeries.value);
-console.log(route.params.name,"Slider img");
+})
+
+
+
+// const slug = computed(() => route.params.name || selectedSeries.value);
+// console.log(slug,"Slider img");
 
 </script>

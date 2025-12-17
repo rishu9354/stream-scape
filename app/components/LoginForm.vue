@@ -196,20 +196,19 @@ async function onSubmit() {
   try {
     if (isLogin.value) {
       await logic.login(form.email, form.password);
-      setTimeout(() => {
-        showIntro.value = false;
-      }, 3000);
+     
     } else {
       await logic.signup(form.fullname, form.email, form.password);
-      setTimeout(() => {
-        showIntro.value = false;
-      }, 3000);
+      
+      // await logic.login(form.email, form.password);
     }
 
     auth.value.isAuthenticated = true;
+    showIntro.value = false;
     await nextTick();
     router.replace("/");
   } catch (err) {
+    showIntro.value = false;
     console.error("Login script pe error:", err);
     // Error ko UI pe show ke liye logic:
     errorMsg.value = err.message || "Invalid credentials. Please try again.";

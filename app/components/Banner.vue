@@ -98,25 +98,39 @@ const props = defineProps({
     
 })
 
-const selectedSeries = computed(()=>{
-    // if coming from [name].vue
-    if(props.isDynamicPage && route.params.name){
-        return route.params.name.replaceAll("-", "");
-    } 
+const selectedSeries = ref('');
 
-    // if coming from home page
-    if(props.seriesList && props.seriesList.length > 0){
-        const randomIndex = Math.floor(Math.random() * props.seriesList.length);
-        return props.seriesList[randomIndex].replaceAll("-","");
-    }
-    return "Featured Series";   
-});
+// onMounted(()=>{
+// //   // if coming from [name].vue
+// //     if(props.isDynamicPage && route.params.name){
+// //         selectedSeries.value =  route.params.name;
+// //         return;
+// //     } 
+
+// //     // if coming from home page
+//     // if(props.seriesList && props.seriesList.length > 0){
+//     //         const randomIndex = Math.floor(Math.random() * props.seriesList.length);
+//     //         return props.seriesList[randomIndex].replaceAll("-","");
+//     //     }
+// })
+// const selectedSeries = computed(()=>{
+//   
+
+//     return "Featured Series";   
+// });
 
 const slug = computed(() => route.params.name || selectedSeries.value);
 // const movie = computed(() => getMovieData.movie)
 
 onMounted(() =>{
-    if(slug.value){
+   
+
+    // if coming from [name].vue
+    if(props.isDynamicPage && route.params.name){
+        selectedSeries.value =  route.params.name;
+        return;
+    } 
+     if(slug.value){
         getMovieData.fetchMovie(slug.value)
     }
 })

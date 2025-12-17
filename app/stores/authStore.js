@@ -9,7 +9,7 @@ export const useAuthStore = defineStore('auth', () => {
     const auth = useAuth(); //global state
     const { $axios } = useNuxtApp(); //global state plugins
     const user = ref(null);
-    const fname = ref('');
+    // const fname = ref('');
   const token = useCookie('token', {
     maxAge: 60 * 60 * 24 * 7, // 1 week tak valid rahega
     path: '/',                 // <--- YEH SABSE ZAROORI HAI (Isse cookie poori app me dikhegi)
@@ -30,7 +30,9 @@ export const useAuthStore = defineStore('auth', () => {
 
                 if (process.client) localStorage.setItem("token", res.data.token);
 
-                fname.value = res.data.user.fullname;
+                // console.log("Login details:",res.data.user);
+
+                // fname.value = res.data.user.fullname;
                 // console.log("Backend se aaya hua success msg: ", res.data.success)
                 // console.log("Backend se aaya hua msg: ", res.data.msg)
                 return true;
@@ -62,12 +64,13 @@ export const useAuthStore = defineStore('auth', () => {
                 this.auth.isAuthenticated = true;
 
                 if (process.client) localStorage.setItem("token", res.data.token);
-                fname.value = res.data.user.fullname;
+                // fname.value = fullname;
 
 
 
-                // console.log("Backend se aaya hua msg: ", res.data.success)
-
+                // console.log("SignUp msg: ", res.data.success)
+                // console.log("Signup details:",res.data.user);
+                
                 // localStorage.setItem("token",res.data.token);
 
                 // console.warn("SignUp Done", res.data);
@@ -83,6 +86,19 @@ export const useAuthStore = defineStore('auth', () => {
         }
     }
 
+//      // 🔹 RESTORE USER (PAGE REFRESH FIX)
+//   async function restoreUser() {
+//     if (!token.value) return
+
+//     try {
+//       const res = await $axios.get('/auth/me')
+//       user.value = res.data.user
+//       auth.value.isAuthenticated = true
+//     } catch {
+//       logout()
+//     }
+//   }
+
     function logout() {
         user.value = null;
         token.value = null;
@@ -97,7 +113,7 @@ export const useAuthStore = defineStore('auth', () => {
 
 
     }
-
+ const fname = computed(() => user.value?.fullname || '')
 
     return { auth, login, user, logout, signup, token,fname }
 })

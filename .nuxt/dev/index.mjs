@@ -1129,22 +1129,7 @@ const plugins = [
 _3q7oDvThEhNA1hA6kgkFh0JIKT_g4axOAJ6IWzgSW8
 ];
 
-const assets = {
-  "/index.mjs": {
-    "type": "text/javascript; charset=utf-8",
-    "etag": "\"1352d-+Yi0V4aBJV9J6UKaNjJhfiCQrYw\"",
-    "mtime": "2025-12-14T13:53:07.940Z",
-    "size": 79149,
-    "path": "index.mjs"
-  },
-  "/index.mjs.map": {
-    "type": "application/json",
-    "etag": "\"46776-sWbe9bjSpgikKYkIyU29h5uj7S0\"",
-    "mtime": "2025-12-14T13:53:07.940Z",
-    "size": 288630,
-    "path": "index.mjs.map"
-  }
-};
+const assets = {};
 
 function readAsset (id) {
   const serverDir = dirname$1(fileURLToPath(globalThis._importMeta_.url));
@@ -1890,7 +1875,7 @@ const styles$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
 }, Symbol.toStringTag, { value: 'Module' }));
 
 const lists = defineEventHandler(() => {
-  return ["Wednesday 1", "Ballerina", "Winter", "Special Ops 1.5"];
+  return ["wednesday-1", "ballerina", "winter", "special-ops-1.5"];
 });
 
 const lists$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
@@ -1899,7 +1884,7 @@ const lists$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
 }, Symbol.toStringTag, { value: 'Module' }));
 
 const shows = defineEventHandler(() => {
-  return ["Wednesday 1", "Special Ops 1.5"];
+  return ["wednesday-1", "special-ops-1.5"];
 });
 
 const shows$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({

@@ -1,3 +1,3 @@
 export default defineEventHandler(()=>{
-    return["Wednesday 1","Special Ops 1.5"];
+    return["wednesday-1","special-ops-1.5"];
 })
