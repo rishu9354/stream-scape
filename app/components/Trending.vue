@@ -43,7 +43,7 @@ const { movies } = storeToRefs(getMovieData);
 onMounted(() =>{
     getMovieData.movieList()
 })
-console.log(movies);
+// console.log(movies);
 // const series = movies.value
 
 

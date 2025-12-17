@@ -41,9 +41,9 @@ export const useMovieStore = defineStore('mdata',() =>{
         try {
             const res = await $axios.get(`/video/`);
             if(!res || !res.data) throw new Error("Failed to fetch movie!");
-            console.log("Movie list from backend :",res.data)
+            // console.log("Movie list from backend :",res.data)
             movies.value = res.data?.data || res.data;
-            console.log("MovieList.value",movies.value);
+            // console.log("MovieList.value",movies.value);
         } catch (error) {
             console.error("Error in fetching movie:",error);
             
