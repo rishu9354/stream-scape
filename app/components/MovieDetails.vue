@@ -85,7 +85,7 @@ const slug = route.params.name;
 const getMovieData = useMovieStore();
 const { movie, currentEp } = storeToRefs(getMovieData);
 const movieData = movie;
-console.log("movie details:", movieData.title)
+// console.log("movie details:", movieData.title)
 
 
 const selectedTab = ref('storyline');
@@ -109,7 +109,7 @@ function goToPlayer(ep) {
             ep: ep.title
         }
     })
-    console.log("episode click:", ep.title);
+    // console.log("episode click:", ep.title);
 
 }
 onMounted(() => {
