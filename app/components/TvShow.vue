@@ -77,7 +77,7 @@ import { useContent } from '~/composables/useContent';
 const {getShows} = useContent();
 const series = getShows();
 
-console.log(series);
+// console.log(series);
 
 // Fallback for broken images
 const handleImageError = (e) => {
