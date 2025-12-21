@@ -32,7 +32,7 @@ onMounted(()=>{
     if(props.seriesList.length > 0){
         const randomIndex = Math.floor(Math.random() * props.seriesList.length);
         selectedSeries.value =  props.seriesList[randomIndex];
-        console.log("Slider value: ",selectedSeries.value)
+        // console.log("Slider value: ",selectedSeries.value)
     }
 
 })
