@@ -14,7 +14,7 @@ import { useContent } from '~/composables/useContent';
 const {getLists} = useContent();
 const trendingSeries = getLists();    
 
-console.log("TrendingSeries Jo home page se slider pe value send kar rha hai :",trendingSeries);
+// console.log("TrendingSeries Jo home page se slider pe value send kar rha hai :",trendingSeries);
 
 
 
