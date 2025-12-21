@@ -8,8 +8,12 @@
 </template>
 
 <script setup>
-// using server/api to get web series name
-const { data: trendingSeries } = await useFetch("/api/lists",{baseURL:'/api'});
+import { useContent } from '~/composables/useContent';
+
+
+const {getLists} = useContent();
+const trendingSeries = getLists();    
+
 console.log("TrendingSeries Jo home page se slider pe value send kar rha hai :",trendingSeries);
 
 

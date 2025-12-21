@@ -72,12 +72,11 @@
 </template>
 
 <script setup>
+import { useContent } from '~/composables/useContent';
 
+const {getShows} = useContent();
+const series = getShows();
 
-
-
-// using server/api to get web series name
-const { data: series } = await useFetch("/api/shows",{baseURL:'/api'});
 console.log(series);
 
 // Fallback for broken images

@@ -103,6 +103,7 @@ declare global {
   const useAttrs: typeof import('vue')['useAttrs']
   const useAuth: typeof import('../../app/composables/state')['useAuth']
   const useAuthStore: typeof import('../../app/stores/authStore')['useAuthStore']
+  const useContent: typeof import('../../app/composables/useContent')['useContent']
   const useCookie: typeof import('../../node_modules/nuxt/dist/app/composables/cookie')['useCookie']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
@@ -293,6 +294,7 @@ declare module 'vue' {
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>
     readonly useAuth: UnwrapRef<typeof import('../../app/composables/state')['useAuth']>
     readonly useAuthStore: UnwrapRef<typeof import('../../app/stores/authStore')['useAuthStore']>
+    readonly useContent: UnwrapRef<typeof import('../../app/composables/useContent')['useContent']>
     readonly useCookie: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/cookie')['useCookie']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
