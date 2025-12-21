@@ -13,12 +13,12 @@
                 </svg>
             </div>
         </div>
-
+<!-- 
         <div v-if="pending" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
-            <div v-for="n in 5" :key="n" class="aspect-[2/3] bg-zinc-800 rounded-md animate-pulse"></div>
-        </div>
+            <div v-for="n in 5" :key="n" class="aspect-[2/3] bg-zinc-800 rounded-md animate-pulse">2</div>
+        </div> -->
 
-        <div v-else
+        <div
             class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 md:gap-y-8 md:gap-x-4">
 
             <div v-for="list in series" :key="list"
@@ -73,9 +73,12 @@
 
 <script setup>
 
+
+
+
 // using server/api to get web series name
-const { data: series,pending } = await useFetch("/api/shows",{baseURL:'/api'});
-// console.log(series);
+const { data: series } = await useFetch("/api/shows",{baseURL:'/api'});
+console.log(series);
 
 // Fallback for broken images
 const handleImageError = (e) => {
